@@ -37,47 +37,38 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-router.get('/:id', async (req, res) => {
+router.post('/', withAuth, async (req, res) => {
   try {
-    const commentData = await Post.findOne({
-      where: { id: req.params.id },
-      attributes: ['id', 'title', 'content', 'created_at'],
-      order: [['created_at', 'DESC']],
-      include: [
-        { model: User, attributes: ['username'] },
-        {
-          model: Comment,
-          attributes: [
-            'id',
-            'comment_text',
-            'post_id',
-            'user_id',
-            'created_at',
-          ],
-          include: { model: User, attributes: ['username'] },
-        },
-      ],
+    const newComment = await Comment.create({
+      ...req.body, // which is really just comment_text and post_id - but a spreader is fancy
+      user_id: req.session.user_id,
     });
-    if (!commentData) {
-      res.status(404).json({ message: `no posts with id = ${req.params.id}` });
-      return;
-    }
-    res.status(200).json(commentData);
+
+    res.status(200).json(newComment);
   } catch (err) {
     res.status(400).json(err);
   }
 });
 
-router.post('/', withAuth, async (req, res) => {
+router.put('/:id', withAuth, async (req, res) => {
   try {
-    const newPost = await Post.create({
-      ...req.body,
-      // title: req.body.title,
-      // content: req.body.content,
-      user_id: req.session.user_id,
-    });
-
-    res.status(200).json(newPost);
+    const updatedComment = await Comment.update(
+      {
+        comment_text: req.body.comment_text,
+      },
+      {
+        where: {
+          id: req.params.id,
+        },
+      }
+    );
+    if (!updatedComment) {
+      res
+        .status(404)
+        .json({ message: `No comment found with id = ${req.params.id}` });
+      return;
+    }
+    res.status(200).json(updatedComment);
   } catch (err) {
     res.status(400).json(err);
   }
@@ -85,10 +76,9 @@ router.post('/', withAuth, async (req, res) => {
 
 router.delete('/:id', withAuth, async (req, res) => {
   try {
-    const commentData = await Post.destroy({
+    const commentData = await Comment.destroy({
       where: {
         id: req.params.id,
-        user_id: req.session.user_id,
       },
     });
     if (!commentData) {
