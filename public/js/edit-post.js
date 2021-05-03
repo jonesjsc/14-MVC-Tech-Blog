@@ -3,8 +3,6 @@ async function editFormHandler(event) {
 
   const title = document.querySelector('input[name="post-title"]').value.trim();
   const content = document.querySelector('input[name="content"]').value.trim();
-  console.log(title);
-  console.log(content);
 
   const id = window.location.toString().split('/')[
     window.location.toString().split('/').length - 1
@@ -21,7 +19,6 @@ async function editFormHandler(event) {
       'Content-Type': 'application/json',
     },
   });
-  console.table(response);
 
   if (response.ok) {
     document.location.replace('/dashboard/');
