@@ -45,3 +45,7 @@ This exercise requires the following npm modules
 | post   | /api/comment     | Create a new comment - expects JSON object formatted: <br>`{`<br>`"comment_text": "`<em>`COMMENT_TEXT`</em>`",`<br>`"post_id": "`<em>`POST_ID`</em>`"`<br>`}`                                                                               |
 | put    | /api/comment/:id | Update a comment by ID - expects JSON object formatted:<br>`{`<br>`"comment_text": "`<em>`COMMENT_TEXT`</em>`"`<br>`}`                                                                                                                      |
 | delete | /api/comment/:id | Deletes a commend by ID                                                                                                                                                                                                                     |
+
+# ER Diagram
+
+![<img src=./assets/ERDiagram.png>](./assets/ERDiagram.png)
