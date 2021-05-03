@@ -22,10 +22,15 @@ This exercise requires the following npm modules
 
 # Links
 
-| Description       | Link                                               |
-| ----------------- | -------------------------------------------------- |
-| github repo       | https://github.com/jonesjsc/13-E-Commerce-Back-End |
-| walkthrough video | https://youtu.be/-gwsvU9YaCA                       |
+| Description       | Link                                         |
+| ----------------- | -------------------------------------------- |
+| github repo       | https://github.com/jonesjsc/14-MVC-Tech-Blog |
+| heroku deployment | https://techblog-hw14.herokuapp.com/         |
+
+# Issues
+
+1. The comment handling is not correct and needs to be worked / seems that login / logout is not right
+2. you can't tell what username is logged in from the navbar - this should be there
 
 # Routes
 
