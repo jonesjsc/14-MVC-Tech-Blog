@@ -5,7 +5,6 @@ const withAuth = require('../../utils/auth');
 router.get('/', async (req, res) => {
   try {
     const commentData = await Comment.findAll({});
-    // console.table(commentData[0].id);
     if (commentData.length === 0) {
       res
         .status(404)
