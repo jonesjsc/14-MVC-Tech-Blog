@@ -29,8 +29,6 @@ This exercise requires the following npm modules
 | github repo       | https://github.com/jonesjsc/14-MVC-Tech-Blog |
 | heroku deployment | https://techblog-hw14.herokuapp.com/         |
 
-1. you can't tell what username is logged in from the navbar - this should be there
-
 # Routes
 
 | Method | Route            | Description                                                                                                                                                                                                                                 |
