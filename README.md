@@ -19,6 +19,8 @@ This exercise requires the following npm modules
 
 - express
 - sequalize
+- handlebars
+- heroku (deployment)
 
 # Links
 
@@ -27,10 +29,7 @@ This exercise requires the following npm modules
 | github repo       | https://github.com/jonesjsc/14-MVC-Tech-Blog |
 | heroku deployment | https://techblog-hw14.herokuapp.com/         |
 
-# Issues
-
-1. The comment handling is not correct and needs to be worked / seems that login / logout is not right
-2. you can't tell what username is logged in from the navbar - this should be there
+1. you can't tell what username is logged in from the navbar - this should be there
 
 # Routes
 
@@ -54,3 +53,16 @@ This exercise requires the following npm modules
 # ER Diagram
 
 ![<img src=./assets/ERDiagram.png>](./assets/ERDiagram.png)
+
+## Application MVC Structure
+
+- `server.js` - The entry point to our application.
+- `/config` - Database configuration
+- `/controllers` - Most of the application's logic for requests and responses are done in this directory plus routes
+- `/views` - Applications template files using handlebars.
+- `/public` - All public facing assets are in this directory.
+- `/models` - The application models for use with ORM.
+- `/db` - Starter database files.
+- `/assets` - Images.
+- `/seeds` - Seed data and scripts.
+- `/utils` - helpers and auth.
