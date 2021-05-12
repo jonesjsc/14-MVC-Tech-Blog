@@ -1,6 +1,7 @@
 const sequelize = require('../config/connection');
 const { Post, User, Comment } = require('../models');
 const router = require('express').Router();
+// console.log('**************' + req.session.username);
 router.get('/', (req, res) => {
   Post.findAll({
     attributes: ['id', 'title', 'content', 'created_at'],
@@ -21,7 +22,11 @@ router.get('/', (req, res) => {
   })
     .then((dbPostData) => {
       const posts = dbPostData.map((post) => post.get({ plain: true }));
-      res.render('homepage', { posts, logged_in: req.session.logged_in });
+      res.render('homepage', {
+        posts,
+        logged_in: req.session.logged_in,
+        username: req.session.username,
+      });
     })
     .catch((err) => {
       console.log(err);
@@ -68,8 +73,11 @@ router.get('/post/:id', (req, res) => {
         return;
       }
       const post = dbPostData.get({ plain: true });
-      console.log(post);
-      res.render('single-post', { post, logged_in: req.session.logged_in });
+      res.render('single-post', {
+        post,
+        logged_in: req.session.logged_in,
+        username: req.session.username,
+      });
     })
     .catch((err) => {
       console.log(err);
@@ -104,7 +112,11 @@ router.get('/posts-comments', (req, res) => {
       }
       const post = dbPostData.get({ plain: true });
 
-      res.render('posts-comments', { post, logged_in: req.session.logged_in });
+      res.render('posts-comments', {
+        post,
+        logged_in: req.session.logged_in,
+        username: req.session.username,
+      });
     })
     .catch((err) => {
       console.log(err);

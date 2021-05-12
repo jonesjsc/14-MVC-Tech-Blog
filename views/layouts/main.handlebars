@@ -6,34 +6,59 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Homework 14 Tech Blog</title>
   <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+    integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 </head>
 
 <body>
-  <div class="wrapper">
-    <header class="hero">
-      <div>
-        <nav class"nav">
-          <a class="link" href="/">Home</a>
-          <a class="link" href="/dashboard">Dashboard</a>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <a class="navbar-brand" href="/">The Tech Blog</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/dashboard">Dashboard</a>
+        </li>
+        <li class="nav-item">
           {{#if logged_in}}
-          <a class="link" href="/" id="logout">Logout</a>
+          <a class="nav-link" href="/" id="logout">Logout [{{username}}]</a>
           {{else}}
-          <a class="link" href="/login">Login</a>
+          <a class="nav-link" href="/login">Login</a>
           {{/if}}
-        </nav>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <header>
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <h1 class="display-4">The Tech Blog</h1>
+        <p class="lead">A Coding Bootcamp Exercise.</p>
       </div>
+    </div>
+  </header>
 
-      <h1 class="app-title"><i class="fab "></i>The Tech Blog</h1>
-    </header>
-
-    <main>
-      {{{ body }}}
-    </main>
-  </div>
+  <main>
+    {{{ body }}}
+  </main>
 
   {{#if logged_in}}
   <script src="/js/logout.js"></script>
   {{/if}}
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+    crossorigin="anonymous"></script>
 
 </body>
 
